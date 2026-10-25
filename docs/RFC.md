@@ -73,6 +73,7 @@ Itens levantados na reunião e **não decididos ou adiados**, mais pontos que a 
 7. **Autorização por customer.** O `customer_id` vem no body/path e não do JWT, e qualquer role autenticada pode cadastrar (`[09:32] Larissa`, `[09:37] Sofia`). Um usuário poderia configurar webhook de outro customer. Precisa de uma regra de vínculo usuário-customer?
 8. **Secret antiga em envio outbound.** Como "válida por 24 h" se traduz na assinatura enviada (assinar com as duas?). Proposta no FDD, para validação de Sofia (`[09:21] Sofia`).
 9. **Armazenamento da secret** e **assinatura sem o `X-Timestamp`**, que limita a proteção contra replay. Para a revisão de segurança (`[09:46] Sofia`).
+11. **Payload > 64 KB.** Sofia pede "erro" (`[09:23] Sofia`), mas lançar erro dentro de `changeStatus` bloquearia a mudança de status. O FDD propõe enviar direto à DLQ sem abortar a transação. Confirmar.
 10. **Evento na criação do pedido** (`PENDING`): a reunião só trata mudanças via `changeStatus`; criação ficou fora do desenho.
 
 ## 6. Impacto e riscos
